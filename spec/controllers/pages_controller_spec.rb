@@ -4,6 +4,10 @@ describe PagesController do
 
 render_views
 
+before(:each) do
+	@base_title = "Ruby on Rails tutorial Sample App"
+end
+
   describe "GET 'home'" do
     it "returns http success" do
       get 'home'
@@ -13,7 +17,7 @@ render_views
     it "should have the right title" do
     	get 'home'
     	response.should have_selector("title", 
-    			:content => "Ruby on Rails Tutorials Sample App |Home" )
+    			:content => "#{@base_titel} | Home" )
     end 
     
     it "should have a non-blank body" do
@@ -31,7 +35,7 @@ render_views
     it "should have the right title" do
         	get 'contact'
         	response.should have_selector("title", 
-        			:content => "Ruby on Rails Tutorials Sample App |contact" )
+        					:content => "#{@base_title} | contact" )
     end 
   end
   
@@ -44,7 +48,7 @@ render_views
       it "should have the right title" do
           	get 'about'
           	response.should have_selector("title", 
-          			:content => "Ruby on Rails Tutorials Sample App |about" )
+          					:content => "#{@base_title} | about" )
     end 
   end
 
